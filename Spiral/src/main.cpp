@@ -51,9 +51,11 @@ class Spiral {
             m_incAngle = (m_incAngle + 0.0001);
         }
 
-        void draw(sf::RenderWindow& window) {
+
+
+        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const {
             for (Point* point : m_points) {
-                window.draw(point->draw);
+                target.draw(point->draw, states);
             }
         }
 };
@@ -64,7 +66,7 @@ int main() {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!", sf::Style::Default, settings);
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
     Spiral spiral(400);
@@ -84,8 +86,8 @@ int main() {
 
         window.clear();
 
-        spiral.draw(window);
-        //window.draw(shape);
+        //spiral.draw(window);
+        window.draw(spiral);
         window.display();
     }
 
