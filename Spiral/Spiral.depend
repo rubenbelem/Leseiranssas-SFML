@@ -1,12 +1,9 @@
 # depslib dependency file v1.0
-1426957333 source:c:\users\ruben\learning c++\hockey\src\main.cpp
+1429208316 source:c:\users\ruben\documents\github\leseiranssas-sfml\spiral\src\main.cpp
 	<SFML/Graphics.hpp>
-	<SFML/Window.hpp>
-	<stdlib.h>
-	<time.h>
-	<SFML/System.hpp>
+	<vector>
 	<iostream>
-	<cmath>
+	<math.h>
 
 1417930542 c:\c++libs\sfml-2.2\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -360,13 +357,4 @@
 	<SFML/System/String.hpp>
 	<string>
 	<vector>
-
-1426957333 source:c:\users\ruben\documents\github\leseiranssas-sfml\hockey\src\main.cpp
-	<SFML/Graphics.hpp>
-	<SFML/Window.hpp>
-	<stdlib.h>
-	<time.h>
-	<SFML/System.hpp>
-	<iostream>
-	<cmath>
 

@@ -196,7 +196,7 @@ int main() {
     Player p1;
     sf::Clock clock;
     sf::Time elapsed;
-    int n = 120;
+    int n = 10;
 
 
     for (int i = 0; i < n; i++) {
