@@ -16,7 +16,7 @@ class Point {
         }
 };
 
-class Spiral {
+class Spiral : public sf::Drawable {
     private:
         float m_radius;
         float m_angle;
@@ -53,7 +53,7 @@ class Spiral {
 
 
 
-        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const {
+            void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
             for (Point* point : m_points) {
                 target.draw(point->draw, states);
             }
@@ -86,7 +86,6 @@ int main() {
 
         window.clear();
 
-        //spiral.draw(window);
         window.draw(spiral);
         window.display();
     }
