@@ -69,7 +69,9 @@
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add directory="/home/teewa/development/sfml/sfmlbuild/include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-audio-d" />
@@ -77,6 +79,7 @@
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
 					<Add library="sfml-network-d" />
+					<Add directory="/home/teewa/development/sfml/sfmlbuild/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release-dynamic">

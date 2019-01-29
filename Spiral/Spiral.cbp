@@ -17,6 +17,7 @@
 					<Add option="-DGLEW_STATIC" />
 					<Add option="-DFREEGLUT_STATIC" />
 					<Add option="-DSFML_STATIC" />
+					<Add directory="/home/teewa/development/sfml/sfmlbuild/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-lsfml-network-s-d" />
@@ -33,6 +34,12 @@
 					<Add option="-lopengl32" />
 					<Add option="-lsfml-system-s-d" />
 					<Add option="-lwinmm" />
+					<Add library="lsfml-network-s-d" />
+					<Add library="lsfml-audio-s-d" />
+					<Add library="lsfml-graphics-s-d" />
+					<Add library="lsfml-window-s-d" />
+					<Add library="lsfml-system-s-d" />
+					<Add directory="/home/teewa/development/sfml/sfmlbuild/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release-static">
@@ -69,7 +76,9 @@
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add directory="/home/teewa/development/sfml/sfmlbuild/include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-audio-d" />
@@ -77,6 +86,7 @@
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
 					<Add library="sfml-network-d" />
+					<Add directory="/home/teewa/development/sfml/sfmlbuild/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release-dynamic">

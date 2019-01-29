@@ -146,7 +146,7 @@ class Enemy {
         sf::CircleShape draw;
         int id;
 
-        Enemy(int p_id) : draw(10), id(p_id) {
+        Enemy(int p_id) : draw(2), id(p_id) {
             m_speed.x = (rand() % 5 + 1) * (rand() % 2 == 0? 1 : -1);
             m_speed.y = (rand() % 5 + 1) * (rand() % 2 == 0? 1 : -1);
             //sf::R
@@ -196,7 +196,7 @@ int main() {
     Player p1;
     sf::Clock clock;
     sf::Time elapsed;
-    int n = 10;
+    int n = 700;
 
 
     for (int i = 0; i < n; i++) {

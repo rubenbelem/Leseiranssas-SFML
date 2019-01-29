@@ -14,11 +14,6 @@ class Point {
             draw.setPosition(position);
             draw.setFillColor(sf::Color::White);
         }
-
-        Point(sf::Vector2f vec) : position(vec), draw(4) {
-            draw.setPosition(position);
-            draw.setFillColor(sf::Color::White);
-        }
 };
 
 class Spiral : public sf::Drawable {
@@ -27,46 +22,38 @@ class Spiral : public sf::Drawable {
         float m_angle;
         float m_incAngle;
         float m_incRadius;
-        sf::Vector2f* m_center;
+        sf::Vector2f m_center;
         vector<Point*> m_points;
         int m_nPoints;
 
-        sf::Vector2f pointPositionUpdate() {
-            sf::Vector2f newPosition(m_center->x + log10f(m_angle) / sinf(m_angle) * m_radius, m_center->y + ((sinf(m_angle) * log10f(m_angle)) / tanf(m_angle)) * m_radius);
-            return newPosition;
-        }
-
     public:
-        Spiral(int nPoints, sf::Vector2f* center) : m_radius(0.01), m_angle(0), m_incAngle(0.0), m_incRadius(0.5), m_center(center) {
+        Spiral(int nPoints) : m_radius(0.01), m_angle(0), m_incAngle(0.0), m_incRadius(0.3), m_center(700, 400) {
             m_nPoints = nPoints;
 
             for (int i = 0; i < m_nPoints; i++) {
-                m_points.push_back(new Point(pointPositionUpdate()));
+                m_points.push_back(new Point(m_center.x + cosf(m_angle) * m_radius, m_center.y + sinf(m_angle) * m_radius));
                 m_radius += m_incRadius;
                 m_angle += m_incAngle;
             }
-
-            //for (int i = 0; i < m_nPoints - 1; i++) {
-
-            //}
         }
-
         void update() {
             m_radius = 1.0;
             m_angle = 1.0;
 
             for (Point* point : m_points) {
-                point->draw.setPosition(pointPositionUpdate());
+                point->draw.setPosition(m_center.x + (sinf(m_angle) + tanf(m_angle) * cosf(m_angle)) * m_radius, m_center.y + (tanf(m_angle) - cosf(m_angle) / sinf(m_angle)) * m_radius);
                 //std::cout << "Angulo: " << m_angle << "\n";
                 m_radius += m_incRadius;
 
                 m_angle = m_angle + m_incAngle;
             }
 
-            m_incAngle = (m_incAngle + 0.00009);
+            m_incAngle = (m_incAngle + 0.00006);
         }
 
-        void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
+
+
+            void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
             for (Point* point : m_points) {
                 target.draw(point->draw, states);
             }
@@ -78,14 +65,11 @@ class Spiral : public sf::Drawable {
 int main() {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(1268, 768), "SFML works!", sf::Style::Default, settings);
+
+    sf::RenderWindow window(sf::VideoMode(1600, 900), "SFML works!", sf::Style::Default, settings);
     sf::CircleShape shape(100.f);
-    Spiral spiral(1500, new sf::Vector2f(600, 400));
-
     shape.setFillColor(sf::Color::Green);
-
-    //spirals.push_back(Spiral(200, new sf::Vector2f(300, 300)));
-    //spirals.push_back(Spiral(200, new sf::Vector2f(600, 300)));
+    Spiral spiral(800);
 
     window.setFramerateLimit(60);
 
@@ -98,17 +82,9 @@ int main() {
                 window.close();
         }
 
-        /*for (Spiral s : spirals) {
-            s.update();
-        }*/
-
         spiral.update();
 
         window.clear();
-
-        /*for (Spiral s : spirals) {
-            window.draw(s);
-        }*/
 
         window.draw(spiral);
         window.display();

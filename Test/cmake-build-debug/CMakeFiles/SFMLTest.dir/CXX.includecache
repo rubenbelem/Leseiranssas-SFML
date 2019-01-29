@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lathe/Git/Leseiranssas-SFML/Test/main.cpp
+SFML/Graphics.hpp
+-
+SFML/Audio.hpp
+-
+iostream
+-
+algorithm
+-
+random
+-
+ctime
+-
+cstdlib
+-
+
